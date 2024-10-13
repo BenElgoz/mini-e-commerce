@@ -1,0 +1,13 @@
+<div *ngIf="showToast" class="toast-notification" [ngClass]="toastClass">
+  Produit ajouté au panier !
+</div>
+
+<div class="product-list">
+  <div *ngFor="let product of products" class="product-card">
+    <img [src]="product.imageUrl" alt="Image du produit {{ product.name }}">
+    <a [routerLink]="['/product', product.id]" class="product-link">{{ product.name }}</a>
+    <p>{{ product.description }}</p>
+    <p><strong>Prix : {{ product.price | currency:'EUR' }}</strong></p>
+    <button (click)="addToCart(product)">Ajouter au panier</button>
+  </div>
+</div>

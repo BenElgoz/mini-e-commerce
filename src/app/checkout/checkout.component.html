@@ -1,0 +1,14 @@
+<h2>Informations de paiement</h2>
+
+<form #checkoutForm="ngForm" (ngSubmit)="onSubmit(checkoutForm)">
+  <label for="name">Nom complet :</label>
+  <input type="text" id="name" name="name" ngModel required>
+
+  <label for="address">Adresse :</label>
+  <input type="text" id="address" name="address" ngModel required>
+
+  <label for="card">Numéro de carte :</label>
+  <input type="text" id="card" name="card" ngModel required minlength="16" maxlength="16">
+
+  <button type="submit" [disabled]="!checkoutForm.form.valid">Confirmer le paiement</button>
+</form>

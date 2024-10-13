@@ -1,0 +1,25 @@
+<div class="cart-container">
+  <h2>Votre panier</h2>
+
+  <div *ngIf="items.length === 0">
+    <p>Votre panier est vide.</p>
+  </div>
+
+  <div *ngIf="items.length > 0">
+    <div *ngFor="let item of items" class="cart-item card">
+      <img [src]="item.imageUrl" alt="{{ item.name }}" class="cart-item-img">
+      <div class="cart-item-info">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p><strong>Prix : {{ item.price | currency:'EUR' }}</strong></p>
+        <button (click)="removeItem(item)" class="remove-item-btn">Supprimer</button>
+      </div>
+    </div>
+
+    <h3>Total : {{ getTotal() | currency:'EUR' }}</h3>
+
+    <button (click)="clearCart()" class="clear-cart-btn">Vider le panier</button>
+    
+    <button routerLink="/checkout" class="checkout-btn">Procéder au paiement</button>  <!-- Bouton ajouté ici -->  
+  </div>
+</div>
